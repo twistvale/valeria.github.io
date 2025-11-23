@@ -179,4 +179,68 @@
   <div class="blob blob3"></div>
 
   <nav id="navbar">
-    <div class="menu-btn" id="menuToggle"
+    <div class="menu-btn" id="menuToggle">☰</div>
+    <div class="links" id="navLinks">
+      <a href="#about"><i class="lucide-user"></i> About</a>
+      <a href="#projects"><i class="lucide-folder"></i> Projects</a>
+      <a href="#contact"><i class="lucide-mail"></i> Contact</a>
+    </div>
+  </nav>
+
+  <header>
+    <h1>Hey! I'm Vale.</h1>
+    <h2>Developer • Designer • Builder</h2>
+  </header>
+
+  <section id="about" class="reveal">
+    <h3>About Me</h3>
+    <p>Hey! I'm Vale — a part-time programmer who loves building small projects, experimenting with C++, and creating clean visual designs. I'm also working on a small original game. Spoilers soon...</p>
+  </section>
+
+  <section id="projects" class="reveal">
+    <h3>Projects</h3>
+
+    <div class="project">
+      <h4>Project 1 — Surreal</h4>
+      <p>Surreal is my own little game made in Godot using C++ and GDScript. I started it during a boring week… and somehow it became something I actually care about.</p>
+    </div>
+
+    <div class="project"><h4>Project 2 — Coming Soon</h4></div>
+    <div class="project"><h4>Project 3 — Coming Soon</h4></div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <h3>Contact</h3>
+    <p>Email: valetwisted@gmail.com</p>
+  </section>
+
+  <footer>© Vale — Portfolio</footer>
+
+  <script>
+    // NAV DARKEN ON SCROLL
+    const nav = document.getElementById('navbar');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY > 80) nav.classList.add('dark');
+      else nav.classList.remove('dark');
+    });
+
+    // MOBILE MENU
+    const btn = document.getElementById('menuToggle');
+    const links = document.getElementById('navLinks');
+    btn.onclick = ()=> links.classList.toggle('show');
+
+    // SCROLL REVEAL
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
